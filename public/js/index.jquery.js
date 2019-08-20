@@ -14,16 +14,31 @@ init();
 function init() {
 	$.ajax({
 		type: "get",
-		url: ,
-		data: "data",
-		dataType: "dataType",
-		success: function (response) {
-			
-		}
+		url: cityURL,
+		dataType: "json",
+		success: cityFn
 	});
 }
 
 // 도시정보 가져오기
-
+function cityFn(res) {
+	var cities = res.cities;
+	$("#cities").empty();
+	$("#cities").append('<option value="" selected>도시를 선택해 주세요.</option>');
+	for(var i in cities) {
+		$("#cities").append('<option value="'+cities[i].id+'">'+cities[i].name+'</option>');
+	}
+	$("#cities").change(function(){
+		$.ajax({
+			type: "get",
+			url: dailyURL + "&id=" + $(this).val(),
+			dataType: "json",
+			success: dailyFn
+		});
+	});
+}
 
 // 데일리정보 가져오기
+function dailyFn(res) {
+	console.log(res);
+}
