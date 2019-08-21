@@ -1,0 +1,61 @@
+<script>
+const log = console.log;
+const clear = console.clear;
+
+// 함수선언문
+test();
+function test() {
+	log("test()");
+}
+
+// ES5 함수표현식
+var test2 = function() {
+	log("test2()");
+}
+test2();
+
+// ES6 함수표현식
+const test3 = () => log("test3()");
+test3();
+
+// variable 변수 - 변하는 수
+var a;
+a = 10;
+a = 20;
+
+var b = 10;
+
+// ES6에서 let, const가 추가됨
+// constant 상수 - 변하지 않는 수 - 선언과 동시에 값을 대입
+const c = 30;
+const pi = 3.141592;
+
+// 변수의 스코프(범위)
+var d = 10;
+var d = 40;
+log(a);
+
+let e = 20;
+//let e = 50;
+
+
+clear();
+let hongmin = "글로벌홍민";
+log(hongmin);
+function test4() {
+	let hongmin = "동네홍민";
+	log(hongmin);
+}
+test4();
+log(hongmin);
+
+for(var i=0; i<10; i++) {
+
+}
+log(i);
+
+for(let j=0; j<10; j++) {
+	log(j);
+}
+//log(j);
+</script>
