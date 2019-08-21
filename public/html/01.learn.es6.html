@@ -1,4 +1,5 @@
 <script>
+// 변수와 함수의 이야기
 const log = console.log;
 const clear = console.clear;
 
@@ -58,4 +59,31 @@ for(let j=0; j<10; j++) {
 	log(j);
 }
 //log(j);
+
+// 변수의 type (6가지 -> 7가지)
+// primitive(원시, 태초) type 5가지
+			//number, string, boolean, null(빈값), undefined(지정되지 않은 값)
+// reference(참조) 1가지 - function, Array ..
+// Object(객체) 1가지(ES6) - object, map, set, weakset
+
+clear();
+var f = 10;
+var g = f;	// f:10, g:10
+log(f, g);
+f = 20;			// f:20, g:10
+log(f, g);
+
+var h = [1, 2, 3];
+var k = h;
+log(h, k);
+h[1] = 200;
+log(h, k);
+
+clear();
+const m = 10;
+// m = 20; error
+const arr = [1, 2, 3, 4, 5];
+arr[2] = 300;
+arr[5] = 400;
+log(arr);
 </script>
