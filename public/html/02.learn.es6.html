@@ -55,5 +55,32 @@ const Human = (function(){
 	return Human;
 }());
 
+clear();
+var hong = new Human(30, "홍길동");
+var hong2 = new Human(28, "홍길순");
+hong.speak();
+hong2.speak();
 
+const Slide = (function(){
+	//생성자 - Constructor
+	function Slide(_obj, _type, duraion, delay) {
+
+	}
+	return Slide;
+}());
+
+// ES6 객체
+class HumanES6 {
+	constructor(_age, _name) {
+		this.age = _age;
+		this.name = _name;
+	}
+	speak() {
+		log(this.name + "이(가) " + this.age + " 세 라고 외칩니다.");
+	}
+}
+const hong3 = new HumanES6(25, "홍길동");
+const hong4 = new HumanES6(28, "홍길영");
+hong3.speak();
+hong4.speak();
 </script>
