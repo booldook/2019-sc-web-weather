@@ -45,9 +45,9 @@ arr3.speak();
 const Human = (function(){
 	this.age;
 	this.name;
-	function Human(_age, _name) {
-		this.age = _age;
-		this.name = _name;
+	function Human(age, name) {
+		this.age = age;
+		this.name = name;
 	}
 	Human.prototype.speak = function(){
 		console.log(this.name + "이(가) "+this.age+" 세 라고 말한다.");
@@ -63,7 +63,7 @@ hong2.speak();
 
 const Slide = (function(){
 	//생성자 - Constructor
-	function Slide(_obj, _type, duraion, delay) {
+	function Slide(_obj, _type, duration, delay) {
 
 	}
 	return Slide;
