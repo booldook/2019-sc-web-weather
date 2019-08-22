@@ -17,12 +17,22 @@
 	<script src="../js/wow.min.js"></script>
 </head>
 <body>
-	<div class="container h-100 d-flex justify-content-center align-items-center">
+	<div class="container w-100 h-100 d-flex justify-content-center align-items-center">
 		<div class="wrap-main">
 			<select id="cities" class="form-control"></select>
 		</div>
-		<div class="wrap-daily">오늘의 날씨</div>
-		<div class="wrap-weekly">주간 날씨</div>
+		<div class="wrap wrap-daily">
+			<ul class="navi d-flex">
+				<li class="text-center f-125">HOME</li>
+				<li class="text-center f-125">DAILY</li>
+				<li class="text-center f-125">WEEKLY</li>
+			</ul>
+			<div class="conts"></div>
+		</div>
+		<div class="wrap wrap-weekly">
+			<nav></nav>
+			<div class="conts"></div>
+		</div>
 	</div>
 	<script src="../js/index.jquery.js"></script>
 </body>

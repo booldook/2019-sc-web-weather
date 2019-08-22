@@ -1,4 +1,10 @@
 html, body {width: 100%; height: 100%;}
 body {background: url(../img/bg/01d.jpg) no-repeat center; background-size: cover;}
 
-.wrap-daily {color: #fff; padding: 2rem; background-color: rgba(0,0,0,0.7); border: 1px solid #666;}
+.container {padding: 0;}
+.wrap {height: 100%;}
+.navi {height: 60px; line-height: 60px;}
+.navi > li {flex: 1 0 33.3333%; cursor: pointer; background-color: #333; 
+	color: #aaa;}
+.navi > .navi-sel {background-color: #111; color:#f0e399; border: 1px solid #666; border-bottom: none;}
+.wrap > .conts {height: calc(100% - 60px); color: #fff; padding: 2rem; background-color: rgba(0,0,0,0.7); border: 1px solid #666; overflow: auto;}

@@ -21,15 +21,24 @@ function init() {
 		success: cityFn
 	});
 }
+$(".navi > li").click(function(){
+	if($(this).index() == 0) init();
+	else if($(this).index() == 1) wrapChg("D");
+	else wrapChg("W");
+});
 
 // 화면 Show/Hide
 function wrapChg(type) {
 	if(type == 'D') {
+		$(".navi > li").removeClass("navi-sel");
+		$(".navi > li").eq(1).addClass("navi-sel");
 		$(".wrap-daily").show();
 		$(".wrap-weekly").hide();
 		$(".wrap-main").hide();
 	}
 	else if(type == 'W') {
+		$(".navi > li").removeClass("navi-sel");
+		$(".navi > li").eq(2).addClass("navi-sel");
 		$(".wrap-daily").hide();
 		$(".wrap-weekly").show();
 		$(".wrap-main").hide();
@@ -63,7 +72,7 @@ function cityFn(res) {
 // 데일리정보 가져오기
 function dailyFn(res) {
 	console.log(res);
-	var $w = $(".wrap-daily");
+	var $w = $(".wrap-daily > .conts");
 	$w.empty();
 	/*
 	$w.append(res.base+'<br>');
