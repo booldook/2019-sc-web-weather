@@ -1,4 +1,5 @@
 // 전역변수선언
+var cityId;
 var key = '02efdd64bdc14b279bc91d9247db4722';
 var units = 'metric';
 var dailyAPI = 'https://api.openweathermap.org/data/2.5/weather';
@@ -31,14 +32,14 @@ $(".navi > li").click(function(){
 function wrapChg(type) {
 	if(type == 'D') {
 		$(".navi > li").removeClass("navi-sel");
-		$(".navi > li").eq(1).addClass("navi-sel");
+		$(".navi").eq(0).find("li").eq(1).addClass("navi-sel");
 		$(".wrap-daily").show();
 		$(".wrap-weekly").hide();
 		$(".wrap-main").hide();
 	}
 	else if(type == 'W') {
 		$(".navi > li").removeClass("navi-sel");
-		$(".navi > li").eq(2).addClass("navi-sel");
+		$(".navi").eq(1).find("li").eq(2).addClass("navi-sel");
 		$(".wrap-daily").hide();
 		$(".wrap-weekly").show();
 		$(".wrap-main").hide();
@@ -60,17 +61,18 @@ function cityFn(res) {
 		$("#cities").append('<option value="'+cities[i].id+'">'+cities[i].name+'</option>');
 	}
 	$("#cities").change(function(){
+		cityId = $(this).val();
 		$.ajax({
 			type: "get",
-			url: dailyURL + "&id=" + $(this).val(),
+			url: dailyURL + "&id=" + cityId,
 			dataType: "json",
-			success: dailyFn
+			success: weatherFn
 		});
 	});
 }
 
 // 데일리정보 가져오기
-function dailyFn(res) {
+function weatherFn(res) {
 	console.log(res);
 	var $w = $(".wrap-daily > .conts");
 	$w.empty();
@@ -88,7 +90,7 @@ function dailyFn(res) {
 	$w.append(res.weather[0].main+'<br>');
 	*/
 	$w.append('<div class="text-center fa-3x py-3">오늘의 날씨</div>');
-	$w.append('<div class="text-center py-3"><img src="../img/icon/'+res.weather[0].icon+'.png" class="w-50"></div>');
+	$w.append('<div class="text-center py-3"><img src="../img/icon/'+res.weather[0].icon+'.png" class="w-100" style="max-width: 200px;"></div>');
 	$w.append('<div class="text-center fa-2x py-3">현재온도: <b>'+res.main.temp+'</b>℃</div>');
 	$w.append('<div class="text-center fa-2x py-3">현재날씨: <b>'+res.weather[0].main+'</b></div>');
 	wrapChg("D");
