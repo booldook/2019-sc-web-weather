@@ -66,32 +66,46 @@ function cityFn(res) {
 			type: "get",
 			url: dailyURL + "&id=" + cityId,
 			dataType: "json",
-			success: weatherFn
+			success: dailyFn
+		});
+		$.ajax({
+			type: "get",
+			url: weeklyURL + "&id=" + cityId,
+			dataType: "json",
+			success: weeklyFn
 		});
 	});
 }
 
 // 데일리정보 가져오기
-function weatherFn(res) {
-	console.log(res);
-	var $w = $(".wrap-daily > .conts");
-	$w.empty();
+function dailyFn(res) {
+	//console.log(res);
+	var $d = $(".wrap-daily > .conts");
+	$d.empty();
 	/*
-	$w.append(res.base+'<br>');
-	$w.append(res.clouds.all+'<br>');
-	$w.append(res.code+'<br>');
-	$w.append(res.coord.lon+'<br>');
-	$w.append(res.coord.lat+'<br>');
-	$w.append(res.main.temp+'<br>');
-	$w.append(res.main.pressure+'<br>');
-	$w.append(res.main.humidity+'<br>');
-	$w.append(res.weather[0].description+'<br>');
-	$w.append(res.weather[0].icon+'<br>');
-	$w.append(res.weather[0].main+'<br>');
+	$d.append(res.base+'<br>');
+	$d.append(res.clouds.all+'<br>');
+	$d.append(res.code+'<br>');
+	$d.append(res.coord.lon+'<br>');
+	$d.append(res.coord.lat+'<br>');
+	$d.append(res.main.temp+'<br>');
+	$d.append(res.main.pressure+'<br>');
+	$d.append(res.main.humidity+'<br>');
+	$d.append(res.weather[0].description+'<br>');
+	$d.append(res.weather[0].icon+'<br>');
+	$d.append(res.weather[0].main+'<br>');
 	*/
-	$w.append('<div class="text-center fa-3x py-3">오늘의 날씨</div>');
-	$w.append('<div class="text-center py-3"><img src="../img/icon/'+res.weather[0].icon+'.png" class="w-100" style="max-width: 200px;"></div>');
-	$w.append('<div class="text-center fa-2x py-3">현재온도: <b>'+res.main.temp+'</b>℃</div>');
-	$w.append('<div class="text-center fa-2x py-3">현재날씨: <b>'+res.weather[0].main+'</b></div>');
+	$d.append('<div class="text-center fa-3x py-3">오늘의 날씨</div>');
+	$d.append('<div class="text-center py-3"><img src="../img/icon/'+res.weather[0].icon+'.png" class="w-100" style="max-width: 200px;"></div>');
+	$d.append('<div class="text-center fa-2x py-3">현재온도: <b>'+res.main.temp+'</b>℃</div>');
+	$d.append('<div class="text-center fa-2x py-3">현재날씨: <b>'+res.weather[0].main+'</b></div>');
 	wrapChg("D");
+}
+
+// 위클리정보 가져오기
+function weeklyFn(res) {
+	console.log(new Date());
+	console.log(res);
+	var $w = $(".wrap-weekly > .conts");
+	//$w.empty();
 }
