@@ -106,6 +106,26 @@ function dailyFn(res) {
 function weeklyFn(res) {
 	console.log(new Date());
 	console.log(res);
+	var html = '';
 	var $w = $(".wrap-weekly > .conts");
-	//$w.empty();
+	$w.empty();
+	for(var v of res.list) {
+		html = `
+		<li class="w-item">
+			<div>
+				<img src="../img/icon/${v.weather[0].icon}.png" class="w-100">
+			</div>
+			<ul>
+				<li class="w-temp">
+					<span>${v.main.temp}</span>℃
+				</li>
+				<li class="w-desc">
+					<span>${v.weather[0].main}</span>
+					<span>${v.weather[0].description}</span>
+				</li>
+				<li class="w-date">${v.dt_txt}</li>
+			</ul>
+		</li>`;
+		$w.append(html);
+	}
 }
