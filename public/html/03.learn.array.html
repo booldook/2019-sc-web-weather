@@ -80,4 +80,28 @@ arr.sort((a, b) => a - b);
 log(arr);
 arr.sort((a, b) => b - a);
 log(arr);
+
+// toString() : 배열을 문자열로 만들어 줌
+var arr = [1, 2, 3, 4, 5];
+var arrStr = arr.toString();
+log(arrStr);
+
+// 반복문
+for(var i=0; i<10; i++) {}	// ES5
+for(var i in arr) {}				// ES5
+for(var i of arr) {}				// ES6
+while(3>5) {}		// ES5
+arr.forEach(function(i, a, s){});	// ES5
+
+
+clear();
+var arr = ['A', 'B', 'C'];
+
+for(var i in arr) {
+	log(arr[i]);
+}
+
+for(var i of arr) {
+	log(i);
+}
 </script>
