@@ -20,12 +20,21 @@ function init() {
 }
 
 // 네비게이션 이벤트 처리
-for(var v of document.querySelectorAll(".navi")) {
-	for(var v2 of v.children) {
-		v2.addEventListener("click", () => {
-			console.log(this);
-		});
-	}
+// console.log(document.querySelectorAll(".navi > li"));
+for(var v of document.querySelectorAll(".navi > li")) {
+	v.addEventListener("click", (e) => {
+		switch(e.target.outerText) {
+			case "DAILY":
+				wrapChg("D");
+				break;
+			case "WEEKLY":
+				wrapChg("W");
+				break;
+			default:
+				init();
+				break;
+		}
+	});
 }
 
 
