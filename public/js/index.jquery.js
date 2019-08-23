@@ -106,10 +106,12 @@ function dailyFn(res) {
 function weeklyFn(res) {
 	console.log(new Date());
 	console.log(res);
+	var kts;
 	var html = '';
 	var $w = $(".wrap-weekly > .conts");
 	$w.empty();
 	for(var v of res.list) {
+		kts = new Date(new Date(v.dt_txt).getTime() + (9*60*60*1000));
 		html = `
 		<li class="w-item">
 			<div>
@@ -123,7 +125,7 @@ function weeklyFn(res) {
 					<span>${v.weather[0].main}</span>
 					<span>${v.weather[0].description}</span>
 				</li>
-				<li class="w-date">${v.dt_txt}</li>
+				<li class="w-date">${}</li>
 			</ul>
 		</li>`;
 		$w.append(html);
