@@ -125,7 +125,7 @@ function weeklyFn(res) {
 					<span>${v.weather[0].main}</span>
 					<span>${v.weather[0].description}</span>
 				</li>
-				<li class="w-date">${}</li>
+				<li class="w-date">${dspDate(kts, 2)}</li>
 			</ul>
 		</li>`;
 		$w.append(html);
