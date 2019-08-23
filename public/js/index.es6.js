@@ -19,6 +19,16 @@ function init() {
 	ajax.send();
 }
 
+// 네비게이션 이벤트 처리
+for(var v of document.querySelectorAll(".navi")) {
+	for(var v2 of v.children) {
+		v2.addEventListener("click", () => {
+			console.log(this);
+		});
+	}
+}
+
+
 // wrapChg - 화면 Show/Hide
 /*
 function wrapChg(type) {
@@ -41,31 +51,45 @@ function wrapChg(type) {
 	}
 }
 */
+function navClear(_obj) {
+	// _obj = document.querySelectorAll(".navi");
+	_obj.forEach((v, i) => {
+		v.querySelectorAll("li").forEach((v2, i2) => {
+			v2.classList.remove("navi-sel");
+		});
+	});
+}
 function wrapChg(type) {
+	const _daily = document.querySelector(".wrap-daily");
+	const _weekly = document.querySelector(".wrap-weekly");
+	const _main = document.querySelector(".wrap-main");
+	const _nav = document.querySelectorAll(".navi");
 	switch (type) {
 		case "D":
-			document.querySelector(".wrap-daily").classList.add("d-block");
-			document.querySelector(".wrap-daily").classList.remove("d-none");
-			document.querySelector(".wrap-weekly").classList.add("d-none");
-			document.querySelector(".wrap-weekly").classList.remove("d-block");
-			document.querySelector(".wrap-main").classList.add("d-none");
-			document.querySelector(".wrap-main").classList.remove("d-block");
+			//_nav[0].children[1].classList.add("navi-sel");
+			_daily.classList.add("d-block");
+			_daily.classList.remove("d-none");
+			_weekly.classList.add("d-none");
+			_weekly.classList.remove("d-block");
+			_main.classList.add("d-none");
+			_main.classList.remove("d-block");
 			break;
 		case "W":
-			document.querySelector(".wrap-daily").classList.add("d-none")
-			document.querySelector(".wrap-daily").classList.remove("d-block");
-			document.querySelector(".wrap-weekly").classList.add("d-block");
-			document.querySelector(".wrap-weekly").classList.remove("d-none");
-			document.querySelector(".wrap-main").classList.add("d-none");
-			document.querySelector(".wrap-main").classList.remove("d-block");
+			//_nav[1].children[2].classList.add("navi-sel");
+			_daily.classList.add("d-none")
+			_daily.classList.remove("d-block");
+			_weekly.classList.add("d-block");
+			_weekly.classList.remove("d-none");
+			_main.classList.add("d-none");
+			_main.classList.remove("d-block");
 			break;
 		default:
-			document.querySelector(".wrap-daily").classList.add("d-none");
-			document.querySelector(".wrap-daily").classList.remove("d-block");
-			document.querySelector(".wrap-weekly").classList.add("d-none");
-			document.querySelector(".wrap-weekly").classList.remove("d-block");
-			document.querySelector(".wrap-main").classList.add("d-block");
-			document.querySelector(".wrap-main").classList.remove("d-none");
+			_daily.classList.add("d-none");
+			_daily.classList.remove("d-block");
+			_weekly.classList.add("d-none");
+			_weekly.classList.remove("d-block");
+			_main.classList.add("d-block");
+			_main.classList.remove("d-none");
 			break;
 	}
 }
@@ -106,13 +130,13 @@ function dailyFn() {
 		let iconSrc = `../img/icon/${res.weather[0].icon}.png`;
 		let temp = `현재온도: <b>${res.main.temp}</b>℃`;
 		let desc = `현재날씨: ${res.weather[0].main}`;
-		let _wrap = document.querySelector(".wrap-daily");
+		let _wrap = document.querySelector(".wrap-daily").querySelector(".conts");
 		let _title = document.createElement("div");
 		let _img = document.createElement("div");
 		let _temp = document.createElement("div");
 		let _desc = document.createElement("div");
 		_title.innerHTML = '오늘의 날씨';
-		_img.innerHTML = `<img src="${iconSrc}" class="w-50">`;
+		_img.innerHTML = `<img src="${iconSrc}" class="w-100 daily-img">`;
 		_temp.innerHTML = temp;
 		_desc.innerHTML = desc;
 		_title.setAttribute("class", "text-center py-3 fa-3x");

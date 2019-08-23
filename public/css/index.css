@@ -9,6 +9,7 @@ body {background: url(../img/bg/01d.jpg) no-repeat center; background-size: cove
 .navi > .navi-sel {background-color: #111; color:#f0e399; border: 1px solid #666; border-bottom: none;}
 .wrap > .conts {height: calc(100% - 60px); color: #fff; background-color: rgba(0,0,0,0.7); border: 1px solid #666; overflow: auto;}
 .wrap-daily > .conts {padding: 2rem;}
+.daily-img {max-width: 180px;}
 
 .wrap-weekly > .conts {display: flex; align-items: flex-start; align-content: flex-start; flex-wrap: wrap;}
 .w-item {display: flex; 

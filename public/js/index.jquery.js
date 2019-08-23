@@ -96,7 +96,7 @@ function dailyFn(res) {
 	$d.append(res.weather[0].main+'<br>');
 	*/
 	$d.append('<div class="text-center fa-3x py-3">오늘의 날씨</div>');
-	$d.append('<div class="text-center py-3"><img src="../img/icon/'+res.weather[0].icon+'.png" class="w-100" style="max-width: 200px;"></div>');
+	$d.append('<div class="text-center py-3"><img src="../img/icon/'+res.weather[0].icon+'.png" class="w-100 daily-img"></div>');
 	$d.append('<div class="text-center fa-2x py-3">현재온도: <b>'+res.main.temp+'</b>℃</div>');
 	$d.append('<div class="text-center fa-2x py-3">현재날씨: <b>'+res.weather[0].main+'</b></div>');
 	wrapChg("D");
