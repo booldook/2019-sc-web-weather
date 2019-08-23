@@ -59,7 +59,7 @@ function wrapChg(type) {
 			break;
 	}
 }
-*/
+
 function navClear(_obj) {
 	// _obj = document.querySelectorAll(".navi");
 	_obj.forEach((v, i) => {
@@ -68,6 +68,8 @@ function navClear(_obj) {
 		});
 	});
 }
+*/
+
 function wrapChg(type) {
 	const _daily = document.querySelector(".wrap-daily");
 	const _weekly = document.querySelector(".wrap-weekly");
@@ -108,6 +110,9 @@ function cityFn() {
 	if (this.readyState == 4 && this.status == 200) {
 		var _city = document.querySelector("#cities");
 		var res = JSON.parse(this.responseText).cities;
+		_city.innerHTML = '<option value="" selected>도시를 선택해 주세요.</option>';
+		for(var v of res) _city.innerHTML += `<option value="${v.id}">${v.name}</option>`;
+		/*
 		var _elem = document.createElement('option');
 		var title = document.createTextNode('도시를 선택해 주세요.');
 		_elem.appendChild(title);
@@ -123,11 +128,16 @@ function cityFn() {
 			_elem.appendChild(title);
 			_city.appendChild(_elem);
 		}
-		_city.addEventListener("change", function () {
+		*/
+		_city.addEventListener("change", function (e) {
 			var ajax = new XMLHttpRequest();
 			ajax.onreadystatechange = dailyFn;
-			ajax.open('GET', dailyURL + "&id=" + this.value, true);
+			ajax.open('GET', dailyURL + "&id=" + e.target.value, true);
 			ajax.send();
+			var ajax2 = new XMLHttpRequest();
+			ajax2.onreadystatechange = weeklyFn;
+			ajax2.open('GET', weeklyURL + "&id=" + e.target.value, true);
+			ajax2.send();
 		});
 	}
 }
